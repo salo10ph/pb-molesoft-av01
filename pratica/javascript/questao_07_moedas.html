@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ex 7</title>
+	</head>
+	
+	<body>
+		<input/>
+		<button>Calcular troco</button>
+		<script>
+			
+			var moeda = [50, 25, 10, 5, 1];
+			var qntMoedas = [0, 0, 0, 0, 0];
+			var valor = document.querySelector("input");
+			var totalMoedas = 0;
+			
+			function pulaLinha(){
+				document.write("<br>");
+			}
+			
+			function mostra(texto){
+				document.write(texto);
+				pulaLinha();
+			}
+			
+			function calculaTroco(){
+				
+				valor.value *= 100;
+				for(var i = 0; i < 5; i++){
+					qntMoedas[i] = parseInt(valor.value / moeda[i]);
+					valor.value = (valor.value % moeda[i]);
+					totalMoedas += qntMoedas[i];
+				}
+				
+				mostra("Total de moedas: " + totalMoedas);
+				mostra("Sendo:");	
+				
+				for(var i = 0; i < 5; i++){
+					mostra(qntMoedas[i] + " de " + moeda[i] + " centavos.");
+				}
+			
+				
+			}
+			
+			var botao = document.querySelector("button");
+			botao.onclick = calculaTroco;
+			
+		</script>
+	</body>
+</html>
